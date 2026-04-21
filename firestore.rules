@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check for admin role
+    function isAdmin() {
+      return request.auth != null && request.auth.token.role == 'admin';
+    }
+
+    // Helper function to check for role
+    function hasRole(role) {
+      return request.auth != null && request.auth.token.role == role;
+    }
+
+    // Default rule: Admins can do everything
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+
+    // Profiles collection
+    match /profiles/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth.uid == userId || isAdmin();
+    }
+
+    // Courses and Events (publicly readable by authenticated users)
+    match /courses/{courseId} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+
+    match /events/{eventId} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin() || hasRole('startup_admin');
+    }
+  }
+}

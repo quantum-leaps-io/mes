@@ -1,0 +1,28 @@
+{
+  "Index": {
+    "welcome": "Welcome to the Hub",
+    "title": "Accelerate Your Career & Innovation.",
+    "description": "A specialized multi-tenant platform connecting top graduates with leading companies and enabling startups to scale through incubation and mentorship.",
+    "getStarted": "Get Started",
+    "explore": "Explore Modules"
+  },
+  "Features": {
+    "matching": "Talent Matching",
+    "matchingDesc": "AI-driven matching between the best graduates and company culture.",
+    "incubation": "Startup Incubation",
+    "incubationDesc": "YC-style tracking for startups with roadmap management.",
+    "training": "Certified Training",
+    "trainingDesc": "Course delivery with progress tracking and skill validation."
+  },
+  "Navigation": {
+    "overview": "Overview",
+    "profile": "Profile",
+    "training": "Training",
+    "events": "Events",
+    "jobs": "Job Postings",
+    "candidates": "Candidates",
+    "startup": "Startup Hub",
+    "ideas": "Ideas",
+    "logout": "Log Out"
+  }
+}
