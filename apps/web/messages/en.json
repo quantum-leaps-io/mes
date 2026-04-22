@@ -22,7 +22,23 @@
     "jobs": "Job Postings",
     "candidates": "Candidates",
     "startup": "Startup Hub",
-    "ideas": "Ideas",
-    "logout": "Log Out"
+    "ideas": "Ideas"
+  },
+  "Onboarding": {
+    "title": "Welcome to TalentHub",
+    "subtitle": "How will you be using the platform?",
+    "individual": "Individual",
+    "individualDesc": "I am a graduate or student looking to connect with companies and learn.",
+    "organization": "Organization",
+    "organizationDesc": "We are a company or startup looking to hire top talent or get incubated.",
+    "continue": "Continue",
+    "back": "Back",
+    "fullName": "Full Name",
+    "profession": "Profession / Major",
+    "university": "University / School",
+    "companyName": "Company Name",
+    "industry": "Industry",
+    "submit": "Complete Profile",
+    "success": "Profile set up successfully!"
   }
 }
