@@ -26,8 +26,12 @@ const SidebarItem = ({ icon: Icon, label, href, active }: any) => (
       flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300
       ${active 
         ? "bg-primary/20 text-primary glow-primary border border-primary/30" 
-        : "text-slate-400 hover:bg-white/5 hover:text-white"}
-    `}>
+        : "text-foreground/50 hover:text-foreground"}
+    `}
+    style={!active ? { background: 'var(--surface-subtle)' } : undefined}
+    onMouseEnter={(e) => { if (!active) e.currentTarget.style.background = 'var(--surface-hover)'; }}
+    onMouseLeave={(e) => { if (!active) e.currentTarget.style.background = 'var(--surface-subtle)'; }}
+    >
       <Icon size={20} />
       <span className="font-medium text-sm">{label}</span>
     </div>
@@ -51,7 +55,7 @@ const LocaleSwitcher = () => {
   };
 
   return (
-    <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10">
+    <div className="flex items-center gap-2 p-1 rounded-full" style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border-medium)' }}>
       {locales.map((l) => (
         <button
           key={l}
@@ -60,7 +64,7 @@ const LocaleSwitcher = () => {
             px-3 py-1 rounded-full text-xs font-bold transition-all duration-300
             ${locale === l 
               ? "bg-primary text-background glow-primary" 
-              : "text-slate-400 hover:text-white"}
+              : "text-foreground/50 hover:text-foreground"}
           `}
         >
           {labels[l]}
@@ -106,12 +110,12 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
     <div className="flex h-screen overflow-hidden bg-background text-foreground transition-all duration-500" dir={isRtl ? "rtl" : "ltr"}>
       {/* Sidebar */}
       {user && (
-        <aside className={`w-72 glass border-e border-white/5 p-6 flex flex-col gap-8 hidden md:flex transition-all duration-500`}>
+        <aside className="w-72 glass p-6 flex flex-col gap-8 hidden md:flex transition-all duration-500" style={{ borderInlineEnd: '1px solid var(--border-subtle)' }}>
           <div className="flex items-center gap-3 mb-10 px-2">
             <div className="w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center overflow-hidden">
               <img src="/logo.png" alt="MUC ecoSystem" className="w-full h-full object-contain p-0.5" />
             </div>
-            <span className="text-2xl font-black tracking-tighter text-white">MUC ecoSystem</span>
+            <span className="text-2xl font-black tracking-tighter text-foreground">MUC ecoSystem</span>
           </div>
 
           <nav className="flex-1 flex flex-col gap-1">
@@ -124,7 +128,7 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
             ))}
           </nav>
 
-          <div className="mt-auto pt-6 border-t border-white/5 flex flex-col gap-1">
+          <div className="mt-auto pt-6 flex flex-col gap-1" style={{ borderTop: '1px solid var(--border-subtle)' }}>
             <SidebarItem icon={Settings} label={t("preferences")} href={`/${locale}/dashboard/preferences`} active={pathname === `/${locale}/dashboard/preferences`} />
             <SidebarItem icon={LogOut} label={t("logout")} href={`/${locale}/logout`} />
           </div>
@@ -134,18 +138,18 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Top bar */}
-        <header className="h-20 glass border-b border-white/5 px-8 flex items-center justify-between">
+        <header className="h-20 glass px-8 flex items-center justify-between" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
           {!user && (
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-white/90 flex items-center justify-center overflow-hidden">
                 <img src="/logo.png" alt="MUC ecoSystem" className="w-full h-full object-contain p-0.5" />
               </div>
-              <span className="text-xl font-black tracking-tighter text-white">MUC ecoSystem</span>
+              <span className="text-xl font-black tracking-tighter text-foreground">MUC ecoSystem</span>
             </div>
           )}
 
           {user && (
-            <button className="md:hidden text-slate-400">
+            <button className="md:hidden text-foreground/50">
               <Menu size={24} />
             </button>
           )}
@@ -156,19 +160,19 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
             {user ? (
               <>
                 <div className={`hidden sm:flex flex-col ${isRtl ? 'text-left' : 'text-right'}`}>
-                  <p className="text-sm font-bold tracking-tight">{user?.displayName || "User"}</p>
+                  <p className="text-sm font-bold tracking-tight text-foreground">{user?.displayName || "User"}</p>
                   <p className="text-[10px] text-primary uppercase font-black tracking-widest">{role || "Member"}</p>
                 </div>
 
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary p-[2px] glow-primary">
                   <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center overflow-hidden">
-                    <User size={24} className="text-slate-400" />
+                    <User size={24} className="text-foreground/40" />
                   </div>
                 </div>
               </>
             ) : (
               <div className="flex items-center gap-4">
-                <Link href={`/${locale}/login`} className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
+                <Link href={`/${locale}/login`} className="text-sm font-bold text-foreground/60 hover:text-foreground transition-colors">
                   {authT("signIn")}
                 </Link>
                 <Link href={`/${locale}/register`} className="px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-background text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
@@ -180,7 +184,7 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
         </header>
 
         {/* Content Area */}
-        <section className="flex-1 overflow-y-auto p-10 bg-slate-950/20">
+        <section className="flex-1 overflow-y-auto p-10" style={{ background: 'var(--surface-subtle)' }}>
           <div className="max-w-6xl mx-auto">
             {children}
           </div>

@@ -27,7 +27,7 @@ const StatCard = ({
   trend?: string;
   color: string;
 }) => (
-  <div className="glass p-6 rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-300 group">
+  <div className="glass p-6 rounded-2xl transition-all duration-300 group">
     <div className="flex items-start justify-between mb-4">
       <div
         className={`w-12 h-12 rounded-xl flex items-center justify-center ${color}`}
@@ -41,8 +41,8 @@ const StatCard = ({
         </span>
       )}
     </div>
-    <p className="text-3xl font-black text-white mb-1">{value}</p>
-    <p className="text-xs text-slate-400 font-medium">{label}</p>
+    <p className="text-3xl font-black text-foreground mb-1">{value}</p>
+    <p className="text-xs text-foreground/50 font-medium">{label}</p>
   </div>
 );
 
@@ -58,16 +58,16 @@ const QuickAction = ({
   color: string;
 }) => (
   <Link href={href}>
-    <div className="glass p-5 rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex items-center gap-4">
+    <div className="glass p-5 rounded-2xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex items-center gap-4">
       <div
         className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${color}`}
       >
         <Icon size={18} />
       </div>
-      <span className="text-sm font-semibold text-white">{label}</span>
+      <span className="text-sm font-semibold text-foreground">{label}</span>
       <ArrowUpRight
         size={16}
-        className="ml-auto text-slate-500 group-hover:text-primary transition-colors"
+        className="ml-auto text-foreground/30 group-hover:text-primary transition-colors"
       />
     </div>
   </Link>
@@ -97,15 +97,15 @@ const ActivityItem = ({
   const Icon = icons[type];
 
   return (
-    <div className="flex items-center gap-4 py-3 border-b border-white/5 last:border-0">
+    <div className="flex items-center gap-4 py-3 last:border-0" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
       <div
         className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${colors[type]}`}
       >
         <Icon size={16} />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-white truncate">{title}</p>
-        <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+        <p className="text-sm font-medium text-foreground truncate">{title}</p>
+        <p className="text-xs text-foreground/40 flex items-center gap-1 mt-0.5">
           <Clock size={10} />
           {time}
         </p>
@@ -125,10 +125,10 @@ export default function DashboardOverviewPage() {
     <div className="flex flex-col gap-8 animate-entrance">
       {/* Welcome Header */}
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-black tracking-tight text-white">
+        <h1 className="text-3xl font-black tracking-tight text-foreground">
           {t("welcomeBack", { name: firstName })}
         </h1>
-        <p className="text-slate-400 text-sm">{t("overviewSubtitle")}</p>
+        <p className="text-foreground/50 text-sm">{t("overviewSubtitle")}</p>
       </div>
 
       {/* Stats Grid */}
@@ -165,8 +165,8 @@ export default function DashboardOverviewPage() {
       {/* Two Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Recent Activity */}
-        <div className="lg:col-span-3 glass p-6 rounded-2xl border border-white/5">
-          <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
+        <div className="lg:col-span-3 glass p-6 rounded-2xl">
+          <h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
             <Clock size={18} className="text-primary" />
             {t("recentActivity")}
           </h2>
@@ -201,7 +201,7 @@ export default function DashboardOverviewPage() {
 
         {/* Quick Actions */}
         <div className="lg:col-span-2 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
+          <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
             <Sparkles size={18} className="text-primary" />
             {t("quickActions")}
           </h2>

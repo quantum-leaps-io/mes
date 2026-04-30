@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeContext";
 import { locales } from "@/i18n";
-import { Settings, Globe, Sun, Moon, Monitor, Check } from "lucide-react";
+import { Settings, Globe, Sun, Moon, Check } from "lucide-react";
 
 export default function PreferencesPage() {
   const t = useTranslations("Preferences");
@@ -43,11 +43,11 @@ export default function PreferencesPage() {
     <div className="flex flex-col gap-10 animate-entrance max-w-3xl">
       {/* Page Header */}
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-black tracking-tight text-white flex items-center gap-3">
+        <h1 className="text-3xl font-black tracking-tight text-foreground flex items-center gap-3">
           <Settings size={28} className="text-primary" />
           {t("title")}
         </h1>
-        <p className="text-slate-400 text-sm">{t("subtitle")}</p>
+        <p className="text-foreground/50 text-sm">{t("subtitle")}</p>
       </div>
 
       {/* Language Section */}
@@ -57,8 +57,8 @@ export default function PreferencesPage() {
             <Globe size={20} />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-white">{t("language")}</h2>
-            <p className="text-xs text-slate-400">{t("languageDesc")}</p>
+            <h2 className="text-lg font-bold text-foreground">{t("language")}</h2>
+            <p className="text-xs text-foreground/50">{t("languageDesc")}</p>
           </div>
         </div>
 
@@ -68,11 +68,11 @@ export default function PreferencesPage() {
               key={lang.code}
               onClick={() => handleLocaleChange(lang.code)}
               className={`
-                glass p-5 rounded-2xl border transition-all duration-300 text-left cursor-pointer
+                glass p-5 rounded-2xl transition-all duration-300 text-left cursor-pointer
                 hover:-translate-y-1 group relative
                 ${locale === lang.code
-                  ? "border-primary/50 bg-primary/5"
-                  : "border-white/5 hover:border-white/10"
+                  ? "border-2 border-primary/50 bg-primary/5"
+                  : ""
                 }
               `}
             >
@@ -82,15 +82,15 @@ export default function PreferencesPage() {
                 </div>
               )}
               <span className="text-2xl mb-3 block">{lang.flag}</span>
-              <p className="font-bold text-white text-sm">{lang.native}</p>
-              <p className="text-xs text-slate-500 mt-0.5">{lang.label}</p>
+              <p className="font-bold text-foreground text-sm">{lang.native}</p>
+              <p className="text-xs text-foreground/40 mt-0.5">{lang.label}</p>
             </button>
           ))}
         </div>
       </div>
 
       {/* Divider */}
-      <div className="h-px bg-white/5" />
+      <div className="h-px" style={{ background: 'var(--border-subtle)' }} />
 
       {/* Theme Section */}
       <div className="flex flex-col gap-5">
@@ -99,8 +99,8 @@ export default function PreferencesPage() {
             <Sun size={20} />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-white">{t("theme")}</h2>
-            <p className="text-xs text-slate-400">{t("themeDesc")}</p>
+            <h2 className="text-lg font-bold text-foreground">{t("theme")}</h2>
+            <p className="text-xs text-foreground/50">{t("themeDesc")}</p>
           </div>
         </div>
 
@@ -110,11 +110,11 @@ export default function PreferencesPage() {
               key={opt.value}
               onClick={() => setTheme(opt.value)}
               className={`
-                glass p-6 rounded-2xl border transition-all duration-300 text-left cursor-pointer
+                glass p-6 rounded-2xl transition-all duration-300 text-left cursor-pointer
                 hover:-translate-y-1 group relative
                 ${theme === opt.value
-                  ? "border-primary/50 bg-primary/5"
-                  : "border-white/5 hover:border-white/10"
+                  ? "border-2 border-primary/50 bg-primary/5"
+                  : ""
                 }
               `}
             >
@@ -130,8 +130,8 @@ export default function PreferencesPage() {
               }`}>
                 <opt.icon size={24} />
               </div>
-              <p className="font-bold text-white text-base">{opt.label}</p>
-              <p className="text-xs text-slate-400 mt-1">{opt.desc}</p>
+              <p className="font-bold text-foreground text-base">{opt.label}</p>
+              <p className="text-xs text-foreground/40 mt-1">{opt.desc}</p>
             </button>
           ))}
         </div>
