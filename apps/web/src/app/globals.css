@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* ===== DARK THEME (default) ===== */
 @theme {
   --color-background: hsl(222.2 84% 4.9%);
   --color-foreground: hsl(210 40% 98%);
@@ -45,9 +46,94 @@
       radial-gradient(at 0% 0%, hsla(199, 89%, 48%, 0.15) 0px, transparent 50%),
       radial-gradient(at 100% 100%, hsla(263, 70%, 50%, 0.15) 0px, transparent 50%);
     background-attachment: fixed;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 }
 
+/* ===== LIGHT THEME overrides ===== */
+[data-theme="light"] body {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-muted: hsl(210 40% 96.1%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(210 40% 96.1%);
+  --color-accent-foreground: hsl(222.2 47.4% 11.2%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+
+  background-color: hsl(210 20% 98%);
+  color: hsl(222.2 84% 4.9%);
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(199, 89%, 48%, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(263, 70%, 50%, 0.06) 0px, transparent 50%);
+}
+
+/* Light theme text overrides */
+[data-theme="light"] .text-white {
+  color: hsl(222.2 84% 4.9%) !important;
+}
+
+[data-theme="light"] .text-slate-400,
+[data-theme="light"] .text-slate-500 {
+  color: hsl(215 16% 47%) !important;
+}
+
+/* Light theme glass effect */
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Light theme sidebar active state */
+[data-theme="light"] .bg-primary\/20 {
+  background-color: hsla(199, 89%, 48%, 0.12) !important;
+}
+
+/* Light theme backgrounds */
+[data-theme="light"] .bg-background {
+  background-color: hsl(210 20% 98%) !important;
+}
+
+[data-theme="light"] .bg-slate-950\/20 {
+  background-color: hsl(210 20% 96%) !important;
+}
+
+[data-theme="light"] .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .bg-white\/3 {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+[data-theme="light"] .border-white\/5,
+[data-theme="light"] .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .hover\:border-white\/10:hover {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Light theme glow effects — softer */
+[data-theme="light"] .glow-primary {
+  box-shadow: 0 0 15px rgba(34, 150, 200, 0.15);
+}
+
+[data-theme="light"] .glow-secondary {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+}
+
+/* ===== DARK THEME defaults ===== */
 .glass {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
@@ -61,4 +147,20 @@
 
 .glow-secondary {
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-entrance {
+  opacity: 0;
+  animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

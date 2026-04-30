@@ -12,7 +12,8 @@ import {
   Lightbulb,
   LogOut,
   Menu,
-  Globe
+  Globe,
+  Settings
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -70,11 +71,19 @@ const LocaleSwitcher = () => {
 };
 
 export const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const { user, role } = useAuth();
+  const { user, role, loading } = useAuth();
   const pathname = usePathname();
   const locale = useLocale();
+  const router = useRouter();
   const t = useTranslations("Navigation");
+  const authT = useTranslations("Auth");
   const isRtl = locale === 'ar' || locale === 'ckb';
+
+  React.useEffect(() => {
+    if (!loading && !user && pathname.includes("/dashboard")) {
+      router.push(`/${locale}/login`);
+    }
+  }, [user, loading, pathname, locale, router]);
 
   const menuItems = [
     { icon: LayoutDashboard, label: t("overview"), href: `/${locale}/dashboard` },
@@ -96,50 +105,77 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
   return (
     <div className="flex h-screen overflow-hidden bg-background text-foreground transition-all duration-500" dir={isRtl ? "rtl" : "ltr"}>
       {/* Sidebar */}
-      <aside className={`w-72 glass border-e border-white/5 p-6 flex flex-col gap-8 hidden md:flex transition-all duration-500`}>
-        <div className="flex items-center gap-3 px-2">
-          <div className="w-10 h-10 rounded-xl bg-primary glow-primary flex items-center justify-center">
-            <Rocket className="text-background" size={24} />
+      {user && (
+        <aside className={`w-72 glass border-e border-white/5 p-6 flex flex-col gap-8 hidden md:flex transition-all duration-500`}>
+          <div className="flex items-center gap-3 mb-10 px-2">
+            <div className="w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center overflow-hidden">
+              <img src="/logo.png" alt="MUC ecoSystem" className="w-full h-full object-contain p-0.5" />
+            </div>
+            <span className="text-2xl font-black tracking-tighter text-white">MUC ecoSystem</span>
           </div>
-          <span className="text-2xl font-black tracking-tighter">TalentHub</span>
-        </div>
 
-        <nav className="flex-1 flex flex-col gap-1">
-          {menuItems.map((item) => (
-            <SidebarItem 
-              key={item.href} 
-              {...item} 
-              active={pathname === item.href} 
-            />
-          ))}
-        </nav>
+          <nav className="flex-1 flex flex-col gap-1">
+            {menuItems.map((item) => (
+              <SidebarItem 
+                key={item.href} 
+                {...item} 
+                active={pathname === item.href} 
+              />
+            ))}
+          </nav>
 
-        <div className="mt-auto pt-6 border-t border-white/5">
-          <SidebarItem icon={LogOut} label={t("logout")} href={`/${locale}/logout`} />
-        </div>
-      </aside>
+          <div className="mt-auto pt-6 border-t border-white/5 flex flex-col gap-1">
+            <SidebarItem icon={Settings} label={t("preferences")} href={`/${locale}/dashboard/preferences`} active={pathname === `/${locale}/dashboard/preferences`} />
+            <SidebarItem icon={LogOut} label={t("logout")} href={`/${locale}/logout`} />
+          </div>
+        </aside>
+      )}
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Top bar */}
         <header className="h-20 glass border-b border-white/5 px-8 flex items-center justify-between">
-          <button className="md:hidden text-slate-400">
-            <Menu size={24} />
-          </button>
+          {!user && (
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-white/90 flex items-center justify-center overflow-hidden">
+                <img src="/logo.png" alt="MUC ecoSystem" className="w-full h-full object-contain p-0.5" />
+              </div>
+              <span className="text-xl font-black tracking-tighter text-white">MUC ecoSystem</span>
+            </div>
+          )}
+
+          {user && (
+            <button className="md:hidden text-slate-400">
+              <Menu size={24} />
+            </button>
+          )}
           
           <div className={`flex items-center gap-6 ${isRtl ? 'mr-auto ml-0' : 'ml-auto mr-0'}`}>
             <LocaleSwitcher />
             
-            <div className={`hidden sm:flex flex-col ${isRtl ? 'text-left' : 'text-right'}`}>
-              <p className="text-sm font-bold tracking-tight">{user?.displayName || "User"}</p>
-              <p className="text-[10px] text-primary uppercase font-black tracking-widest">{role || "Guest Mode"}</p>
-            </div>
+            {user ? (
+              <>
+                <div className={`hidden sm:flex flex-col ${isRtl ? 'text-left' : 'text-right'}`}>
+                  <p className="text-sm font-bold tracking-tight">{user?.displayName || "User"}</p>
+                  <p className="text-[10px] text-primary uppercase font-black tracking-widest">{role || "Member"}</p>
+                </div>
 
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary p-[2px] glow-primary">
-              <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center overflow-hidden">
-                <User size={24} className="text-slate-400" />
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary p-[2px] glow-primary">
+                  <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center overflow-hidden">
+                    <User size={24} className="text-slate-400" />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="flex items-center gap-4">
+                <Link href={`/${locale}/login`} className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
+                  {authT("signIn")}
+                </Link>
+                <Link href={`/${locale}/register`} className="px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-background text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
+                  {authT("signUp")}
+                </Link>
               </div>
-            </div>
+            )}
           </div>
         </header>
 

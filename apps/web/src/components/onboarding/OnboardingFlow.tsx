@@ -2,30 +2,23 @@
 
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
-import { User, Building2, ChevronLeft, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { User, Building2, CheckCircle2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { IndividualWizard } from "./IndividualWizard";
+import { OrganizationForm } from "./OrganizationForm";
 
 export function OnboardingFlow() {
   const t = useTranslations("Onboarding");
   const router = useRouter();
   const [role, setRole] = useState<"individual" | "organization" | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Mocking the backend call logic for now since this is the UI stub
+  const handleSuccess = () => {
+    setIsSuccess(true);
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      // Wait a moment so the user sees the success state
-      setTimeout(() => {
-        // We'll redirect them to dashboard (using regular Next.js router might not persist locale flawlessly if we aren't using next-intl router, but window.location.reload works if we just want to refresh their Claims)
-        router.push("./dashboard");
-      }, 2000);
-    }, 1500);
+      // Send them to dashboard
+      router.push("./dashboard");
+    }, 2000);
   };
 
   if (isSuccess) {
@@ -82,57 +75,10 @@ export function OnboardingFlow() {
               </p>
             </button>
           </div>
+        ) : role === "individual" ? (
+          <IndividualWizard onBack={() => setRole(null)} onSuccess={handleSuccess} />
         ) : (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <button 
-              onClick={() => setRole(null)}
-              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8"
-            >
-              <ChevronLeft size={20} />
-              <span className="font-semibold">{t("back")}</span>
-            </button>
-
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              {role === "individual" ? (
-                <>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-slate-300 ml-1">{t("fullName")}</label>
-                    <input required type="text" className="bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-slate-300 ml-1">{t("profession")}</label>
-                    <input required type="text" className="bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-slate-300 ml-1">{t("university")}</label>
-                    <input required type="text" className="bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-slate-300 ml-1">{t("companyName")}</label>
-                    <input required type="text" className="bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-slate-300 ml-1">{t("fullName")}</label>
-                    <input required type="text" className="bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-slate-300 ml-1">{t("industry")}</label>
-                    <input required type="text" className="bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all" />
-                  </div>
-                </>
-              )}
-
-              <Button 
-                disabled={isSubmitting}
-                className={`mt-6 py-7 rounded-2xl text-lg font-bold shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${role === 'organization' ? 'bg-purple-500 hover:bg-purple-400 glow-secondary shadow-purple-500/20' : 'bg-primary hover:bg-cyan-400 glow-primary shadow-cyan-500/20'} text-background`}
-              >
-                {isSubmitting ? "..." : t("submit")}
-              </Button>
-            </form>
-          </div>
+          <OrganizationForm onBack={() => setRole(null)} onSuccess={handleSuccess} />
         )}
       </div>
     </div>
