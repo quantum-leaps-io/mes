@@ -3,10 +3,6 @@ runConfig:
 
 rootDirectory: web
 
-scripts:
-  buildCommand: npm install && npm run build
-  runCommand: node .next/standalone/server.js
-
 env:
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
     value: AIzaSyCJsQ1ojzSSIcG10kFjL_ZcSm9Qq4_xXms
@@ -22,4 +18,3 @@ env:
     value: "1:361489735576:web:c40b0682842022fefd55ed"
   - variable: PORT
     value: "3000"
-
