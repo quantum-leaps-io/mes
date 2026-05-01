@@ -112,7 +112,7 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
       {user && (
         <aside className="w-72 glass p-6 flex flex-col gap-8 hidden md:flex transition-all duration-500" style={{ borderInlineEnd: '1px solid var(--border-subtle)' }}>
           <div className="flex items-center gap-3 mb-10 px-2">
-            <div className="w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center overflow-hidden">
+            <div className="w-14 h-14 rounded-xl bg-white/90 flex items-center justify-center overflow-hidden">
               <img src="/logo.png" alt="MUC ecosystem" className="w-full h-full object-contain p-0.5" />
             </div>
             <span className="text-2xl font-black tracking-tighter text-foreground">MUC ecoSystem</span>
@@ -155,7 +155,7 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
           )}
 
           <div className={`flex items-center gap-6 ${isRtl ? 'mr-auto ml-0' : 'ml-auto mr-0'}`}>
-            <LocaleSwitcher />
+            {!user && <LocaleSwitcher />}
 
             {user ? (
               <>
@@ -184,8 +184,20 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
         </header>
 
         {/* Content Area */}
-        <section className="flex-1 overflow-y-auto p-10" style={{ background: 'var(--surface-subtle)' }}>
-          <div className="max-w-6xl mx-auto">
+        <section className="flex-1 overflow-y-auto p-10 relative" style={{ background: 'var(--surface-subtle)' }}>
+          {/* Watermark */}
+          {user && (
+            <div className="pointer-events-none fixed inset-0 flex items-center justify-center z-0" style={{ left: '288px' }}>
+              <img
+                src="/logo.png"
+                alt=""
+                className="w-[700px] h-[700px] object-contain select-none"
+                style={{ opacity: 0.03, filter: 'grayscale(100%)' }}
+                draggable={false}
+              />
+            </div>
+          )}
+          <div className="max-w-6xl mx-auto relative z-10">
             {children}
           </div>
         </section>
