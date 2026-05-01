@@ -31,7 +31,16 @@ export default function LoginPage() {
       await signInWithEmailAndPassword(auth, email, password);
       router.push(`/${locale}/dashboard`);
     } catch (err: any) {
-      setError(err.message || t("errorGeneric"));
+      const code = err?.code || "";
+      const errorMap: Record<string, string> = {
+        "auth/invalid-credential": t("errorInvalidCredential"),
+        "auth/user-not-found": t("errorUserNotFound"),
+        "auth/wrong-password": t("errorWrongPassword"),
+        "auth/too-many-requests": t("errorTooManyRequests"),
+        "auth/user-disabled": t("errorUserDisabled"),
+        "auth/network-request-failed": t("errorNetwork"),
+      };
+      setError(errorMap[code] || t("errorGeneric"));
     } finally {
       setLoading(false);
     }

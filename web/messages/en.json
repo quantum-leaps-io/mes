@@ -51,7 +51,18 @@
     "hasAccount": "Already have an account?",
     "loginSuccess": "Successfully logged in!",
     "registerSuccess": "Account created! Proceeding to setup...",
-    "errorGeneric": "An error occurred. Please try again."
+    "errorGeneric": "An error occurred. Please try again.",
+    "errorInvalidCredential": "The email or password you entered is incorrect. Please try again.",
+    "errorUserNotFound": "No account found with this email address.",
+    "errorWrongPassword": "Incorrect password. Please try again.",
+    "errorTooManyRequests": "Too many failed attempts. Please wait a moment and try again.",
+    "errorUserDisabled": "This account has been disabled. Please contact support.",
+    "errorNetwork": "Network error. Please check your connection and try again.",
+    "errorEmailInUse": "An account with this email already exists. Try logging in instead.",
+    "errorWeakPassword": "Password is too weak. Please use at least 6 characters.",
+    "errorInvalidEmail": "Please enter a valid email address.",
+    "errorPopupClosed": "Sign-in was cancelled. Please try again.",
+    "errorAccountExists": "An account already exists with a different sign-in method."
   },
   "Onboarding": {
     "title": "Welcome to MUC ecoSystem",
@@ -173,5 +184,12 @@
     "darkDesc": "A sleek dark interface, easy on the eyes.",
     "light": "Light Mode",
     "lightDesc": "A clean, bright interface for daytime use."
+  },
+  "Logout": {
+    "title": "You've been logged out",
+    "loading": "Logging out...",
+    "message": "Thank you for using MUC ecoSystem. You can log back in or return to the homepage.",
+    "loginButton": "Log In Again",
+    "homeButton": "Go to Homepage"
   }
 }

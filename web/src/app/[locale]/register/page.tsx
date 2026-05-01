@@ -44,7 +44,15 @@ export default function RegisterPage() {
       });
       router.push(`/${locale}/onboarding`);
     } catch (err: any) {
-      setError(err.message || t("errorGeneric"));
+      const code = err?.code || "";
+      const errorMap: Record<string, string> = {
+        "auth/email-already-in-use": t("errorEmailInUse"),
+        "auth/weak-password": t("errorWeakPassword"),
+        "auth/invalid-email": t("errorInvalidEmail"),
+        "auth/too-many-requests": t("errorTooManyRequests"),
+        "auth/network-request-failed": t("errorNetwork"),
+      };
+      setError(errorMap[code] || t("errorGeneric"));
     } finally {
       setLoading(false);
     }
@@ -61,7 +69,13 @@ export default function RegisterPage() {
       await signInWithPopup(auth, provider);
       router.push(`/${locale}/onboarding`);
     } catch (err: any) {
-      setError(err.message || t("errorGeneric"));
+      const code = err?.code || "";
+      const errorMap: Record<string, string> = {
+        "auth/popup-closed-by-user": t("errorPopupClosed"),
+        "auth/account-exists-with-different-credential": t("errorAccountExists"),
+        "auth/network-request-failed": t("errorNetwork"),
+      };
+      setError(errorMap[code] || t("errorGeneric"));
     } finally {
       setLinkedinLoading(false);
     }
