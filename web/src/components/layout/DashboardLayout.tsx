@@ -91,7 +91,6 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
 
   const menuItems = [
     { icon: LayoutDashboard, label: t("overview"), href: `/${locale}/dashboard` },
-    { icon: User, label: t("profile"), href: `/${locale}/dashboard/profile` },
     { icon: GraduationCap, label: t("training"), href: `/${locale}/dashboard/training` },
     { icon: Calendar, label: t("events"), href: `/${locale}/dashboard/events` },
   ];
@@ -129,6 +128,7 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
           </nav>
 
           <div className="mt-auto pt-6 flex flex-col gap-1" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+            <SidebarItem icon={User} label={t("profile")} href={`/${locale}/dashboard/profile`} active={pathname === `/${locale}/dashboard/profile`} />
             <SidebarItem icon={Settings} label={t("preferences")} href={`/${locale}/dashboard/preferences`} active={pathname === `/${locale}/dashboard/preferences`} />
             <SidebarItem icon={LogOut} label={t("logout")} href={`/${locale}/logout`} />
           </div>

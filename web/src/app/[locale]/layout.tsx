@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MUC ecoSystem",
+  title: "MUC Ecosystem",
   description: "A multi-tenant platform for Graduates, Companies, and Startups.",
 };
 
@@ -31,7 +31,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  
+
   // Ensure that the incoming `locale` is valid
   if (!locales.includes(locale as Locale)) {
     notFound();
