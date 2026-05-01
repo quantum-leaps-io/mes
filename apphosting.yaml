@@ -1,9 +1,11 @@
 runConfig:
   runtime: nodejs22
 
+rootDirectory: web
+
 scripts:
-  buildCommand: cd apps/web && npm install && npm run build
-  runCommand: node apps/web/.next/standalone/apps/web/server.js
+  buildCommand: npm install && npm run build
+  runCommand: node .next/standalone/server.js
 
 env:
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
@@ -20,3 +22,4 @@ env:
     value: "1:361489735576:web:c40b0682842022fefd55ed"
   - variable: PORT
     value: "3000"
+

@@ -22,7 +22,7 @@
     "rules": "storage.rules"
   },
   "hosting": {
-    "source": "apps/web",
+    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
