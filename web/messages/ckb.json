@@ -31,7 +31,7 @@
     "register": "دروستکردنی هەژمار",
     "signIn": "چوونەژوورەوە",
     "signUp": "دروستکردنی هەژمار",
-    "signUpSubtitle": "ئەمڕۆ بەشداری MUC ecoSystem بکە",
+    "signUpSubtitle": "ئەمڕۆ بەشداری MUC ecosystem بکە",
     "signUpLinkedIn": "بەردەوامبوون لە ڕێگەی LinkedIn",
     "or": "یان",
     "firstName": "ناوی یەکەم",
@@ -65,7 +65,7 @@
     "errorAccountExists": "هەژمارێک بە شێوازێکی جیاوازی چوونەژوورەوە هەیە."
   },
   "Onboarding": {
-    "title": "بەخێربێیت بۆ MUC ecoSystem",
+    "title": "بەخێربێیت بۆ MUC ecosystem",
     "subtitle": "چۆن پلاتفۆرمەکە بەکاردەهێنیت؟",
     "individual": "تاک / دەرچوو",
     "individualDesc": "من دەرچووم یان قوتابیم دەمەوێت پەیوەندی بە کۆمپانیاکانەوە بکەم و فێرببم.",
@@ -117,7 +117,7 @@
   },
   "Dashboard": {
     "welcomeBack": "بەخێربێیتەوە، {name} 👋",
-    "overviewSubtitle": "ئەوەی ڕوودەدات لە MUC ecoSystem ت.",
+    "overviewSubtitle": "ئەوەی ڕوودەدات لە MUC ecosystem ت.",
     "coursesEnrolled": "خولەکانی تۆمارکراو",
     "upcomingEvents": "چالاکییە داهاتووەکان",
     "jobMatches": "کارە گونجاوەکان",
@@ -177,7 +177,7 @@
     "language": "زمان",
     "languageDesc": "زمانی پیشاندانی دڵخوازی خۆت هەڵبژێرە.",
     "arabic": "عەرەبی",
-    "kurdish": "کوردی (سۆرانی)",
+    "kurdish": "کوردی",
     "theme": "دەرکەوتن",
     "themeDesc": "سیستەمی ڕەنگی دڵخوازی خۆت هەڵبژێرە.",
     "dark": "باری تاریک",
@@ -188,7 +188,7 @@
   "Logout": {
     "title": "چوویتە دەرەوە",
     "loading": "چوونە دەرەوە...",
-    "message": "سوپاس بۆ بەکارهێنانی MUC ecoSystem. دەتوانیت دووبارە بچیتەوە ژوورەوە یان بگەڕێیتەوە بۆ پەڕەی سەرەکی.",
+    "message": "سوپاس بۆ بەکارهێنانی MUC ecosystem. دەتوانیت دووبارە بچیتەوە ژوورەوە یان بگەڕێیتەوە بۆ پەڕەی سەرەکی.",
     "loginButton": "دووبارە چوونەژوورەوە",
     "homeButton": "بۆ پەڕەی سەرەکی"
   }

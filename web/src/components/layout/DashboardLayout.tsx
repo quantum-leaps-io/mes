@@ -2,13 +2,13 @@
 
 import React from "react";
 import { useAuth } from "@/context/AuthContext";
-import { 
-  LayoutDashboard, 
-  User, 
-  Briefcase, 
-  Rocket, 
-  GraduationCap, 
-  Calendar, 
+import {
+  LayoutDashboard,
+  User,
+  Briefcase,
+  Rocket,
+  GraduationCap,
+  Calendar,
   Lightbulb,
   LogOut,
   Menu,
@@ -24,13 +24,13 @@ const SidebarItem = ({ icon: Icon, label, href, active }: any) => (
   <Link href={href}>
     <div className={`
       flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300
-      ${active 
-        ? "bg-primary/20 text-primary glow-primary border border-primary/30" 
+      ${active
+        ? "bg-primary/20 text-primary glow-primary border border-primary/30"
         : "text-foreground/50 hover:text-foreground"}
     `}
-    style={!active ? { background: 'var(--surface-subtle)' } : undefined}
-    onMouseEnter={(e) => { if (!active) e.currentTarget.style.background = 'var(--surface-hover)'; }}
-    onMouseLeave={(e) => { if (!active) e.currentTarget.style.background = 'var(--surface-subtle)'; }}
+      style={!active ? { background: 'var(--surface-subtle)' } : undefined}
+      onMouseEnter={(e) => { if (!active) e.currentTarget.style.background = 'var(--surface-hover)'; }}
+      onMouseLeave={(e) => { if (!active) e.currentTarget.style.background = 'var(--surface-subtle)'; }}
     >
       <Icon size={20} />
       <span className="font-medium text-sm">{label}</span>
@@ -62,8 +62,8 @@ const LocaleSwitcher = () => {
           onClick={() => handleLocaleChange(l)}
           className={`
             px-3 py-1 rounded-full text-xs font-bold transition-all duration-300
-            ${locale === l 
-              ? "bg-primary text-background glow-primary" 
+            ${locale === l
+              ? "bg-primary text-background glow-primary"
               : "text-foreground/50 hover:text-foreground"}
           `}
         >
@@ -113,17 +113,17 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
         <aside className="w-72 glass p-6 flex flex-col gap-8 hidden md:flex transition-all duration-500" style={{ borderInlineEnd: '1px solid var(--border-subtle)' }}>
           <div className="flex items-center gap-3 mb-10 px-2">
             <div className="w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center overflow-hidden">
-              <img src="/logo.png" alt="MUC ecoSystem" className="w-full h-full object-contain p-0.5" />
+              <img src="/logo.png" alt="MUC ecosystem" className="w-full h-full object-contain p-0.5" />
             </div>
             <span className="text-2xl font-black tracking-tighter text-foreground">MUC ecoSystem</span>
           </div>
 
           <nav className="flex-1 flex flex-col gap-1">
             {menuItems.map((item) => (
-              <SidebarItem 
-                key={item.href} 
-                {...item} 
-                active={pathname === item.href} 
+              <SidebarItem
+                key={item.href}
+                {...item}
+                active={pathname === item.href}
               />
             ))}
           </nav>
@@ -153,10 +153,10 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
               <Menu size={24} />
             </button>
           )}
-          
+
           <div className={`flex items-center gap-6 ${isRtl ? 'mr-auto ml-0' : 'ml-auto mr-0'}`}>
             <LocaleSwitcher />
-            
+
             {user ? (
               <>
                 <div className={`hidden sm:flex flex-col ${isRtl ? 'text-left' : 'text-right'}`}>

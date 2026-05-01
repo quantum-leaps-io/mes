@@ -31,7 +31,7 @@
     "register": "Register",
     "signIn": "Sign In",
     "signUp": "Sign Up",
-    "signUpSubtitle": "Join the MUC ecoSystem today",
+    "signUpSubtitle": "Join the MUC ecosystem today",
     "signUpLinkedIn": "Continue with LinkedIn",
     "or": "or",
     "firstName": "First Name",
@@ -65,7 +65,7 @@
     "errorAccountExists": "An account already exists with a different sign-in method."
   },
   "Onboarding": {
-    "title": "Welcome to MUC ecoSystem",
+    "title": "Welcome to MUC ecosystem",
     "subtitle": "How will you be using the platform?",
     "individual": "Individual",
     "individualDesc": "I am a graduate or student looking to connect with companies and learn.",
@@ -117,7 +117,7 @@
   },
   "Dashboard": {
     "welcomeBack": "Welcome back, {name} 👋",
-    "overviewSubtitle": "Here's what's happening in your MUC ecoSystem.",
+    "overviewSubtitle": "Here's what's happening in your MUC ecosystem.",
     "coursesEnrolled": "Courses Enrolled",
     "upcomingEvents": "Upcoming Events",
     "jobMatches": "Job Matches",
@@ -177,7 +177,7 @@
     "language": "Language",
     "languageDesc": "Choose your preferred display language.",
     "arabic": "Arabic",
-    "kurdish": "Kurdish (Sorani)",
+    "kurdish": "Kurdish",
     "theme": "Appearance",
     "themeDesc": "Choose your preferred color scheme.",
     "dark": "Dark Mode",

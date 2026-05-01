@@ -31,7 +31,7 @@
     "register": "إنشاء حساب",
     "signIn": "تسجيل الدخول",
     "signUp": "إنشاء حساب",
-    "signUpSubtitle": "انضم إلى MUC ecoSystem اليوم",
+    "signUpSubtitle": "انضم إلى MUC ecosystem اليوم",
     "signUpLinkedIn": "المتابعة عبر LinkedIn",
     "or": "أو",
     "firstName": "الاسم الأول",
@@ -65,7 +65,7 @@
     "errorAccountExists": "يوجد حساب بالفعل بطريقة تسجيل دخول مختلفة."
   },
   "Onboarding": {
-    "title": "مرحباً بك في MUC ecoSystem",
+    "title": "مرحباً بك في MUC ecosystem",
     "subtitle": "كيف ستستخدم المنصة؟",
     "individual": "فرد / خريج",
     "individualDesc": "أنا خريج أو طالب أتطلع للتواصل مع الشركات والتعلم.",
@@ -117,7 +117,7 @@
   },
   "Dashboard": {
     "welcomeBack": "مرحباً بعودتك، {name} 👋",
-    "overviewSubtitle": "إليك ما يحدث في MUC ecoSystem الخاص بك.",
+    "overviewSubtitle": "إليك ما يحدث في MUC ecosystem الخاص بك.",
     "coursesEnrolled": "الدورات المسجلة",
     "upcomingEvents": "الفعاليات القادمة",
     "jobMatches": "وظائف مطابقة",
@@ -177,7 +177,7 @@
     "language": "اللغة",
     "languageDesc": "اختر لغة العرض المفضلة لديك.",
     "arabic": "العربية",
-    "kurdish": "الكردية (السورانية)",
+    "kurdish": "الكردية",
     "theme": "المظهر",
     "themeDesc": "اختر نظام الألوان المفضل لديك.",
     "dark": "الوضع الداكن",
@@ -188,7 +188,7 @@
   "Logout": {
     "title": "تم تسجيل الخروج",
     "loading": "جارٍ تسجيل الخروج...",
-    "message": "شكراً لاستخدامك MUC ecoSystem. يمكنك تسجيل الدخول مرة أخرى أو العودة إلى الصفحة الرئيسية.",
+    "message": "شكراً لاستخدامك MUC ecosystem. يمكنك تسجيل الدخول مرة أخرى أو العودة إلى الصفحة الرئيسية.",
     "loginButton": "تسجيل الدخول مجدداً",
     "homeButton": "الذهاب للصفحة الرئيسية"
   }
